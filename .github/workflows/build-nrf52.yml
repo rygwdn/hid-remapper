@@ -2,8 +2,9 @@ name: build-nrf52
 on:
   push:
     paths:
-      - 'firmware/**'
-      - 'firmware-bluetooth/**'
+      - "firmware/**"
+      - "firmware-bluetooth/**"
+      - ".github/**"
   workflow_call:
 defaults:
   run:
@@ -13,7 +14,12 @@ jobs:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
-        board: ["adafruit_feather_nrf52840", "seeed_xiao_nrf52840"]
+        board:
+          [
+            "adafruit_feather_nrf52840",
+            "seeed_xiao_nrf52840",
+            "nrf52840_mdk_usb_dongle",
+          ]
     steps:
       - uses: actions/checkout@v4
       - name: Build
