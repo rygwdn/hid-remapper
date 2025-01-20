@@ -1,0 +1,28 @@
+/ {
+	aliases {
+		led0 = &led0_red;
+		led1 = &led0_blue;
+		sw0 = &reset_button;
+	};
+};
+
+// &slot0_partition {
+// 	reg = <0x00001000 0x0005e000>;
+// };
+/delete-node/ &slot0_partition;
+
+&flash0 {
+	partitions {
+		/delete-property/ boot_partition;
+		/delete-property/ partition@1000;
+	};
+};
+
+&flash0 {
+	partitions {
+		slot0_partition: partition@1000 {
+			label = "image-0";
+			reg = <0x00001000 0x0005e000>;
+		};
+	};
+};

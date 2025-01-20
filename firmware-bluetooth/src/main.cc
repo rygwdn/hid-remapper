@@ -902,6 +902,8 @@ void set_gpio_inout_masks(uint32_t in_mask, uint32_t out_mask) {
 int main() {
     LOG_INF("HID Remapper Bluetooth");
 
+    gpio_pin_set_dt(&led1, true);
+
     my_mutexes_init();
     button_init();
     leds_init();
